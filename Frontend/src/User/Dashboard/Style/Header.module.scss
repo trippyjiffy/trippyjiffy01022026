@@ -1,0 +1,108 @@
+.DeshboardHeader {
+  display: block;
+  background: linear-gradient(90deg, #d9630c, #f39c12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .wrapper {
+    width: 100%;
+    margin: auto;
+    padding: 15px 20px;
+    box-sizing: border-box;
+
+    .DeshboardHeaderFlex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .DeshboardHeaderLeft {
+        display: block;
+        h2 {
+          font-size: 22px;
+          font-weight: 600;
+          color: #fff;
+          letter-spacing: 1px;
+        }
+      }
+
+      .DeshboardHeaderRight {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .userInfo {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .userIcon {
+            font-size: 28px;
+            color: #fff;
+          }
+
+          .userName {
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff;
+          }
+        }
+
+        .logoutBtn {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 8px 14px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #fff;
+          background: #ff4d4d;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: #e60000;
+          }
+
+          svg {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .DeshboardHeader {
+    .wrapper {
+      .DeshboardHeaderFlex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+
+        .DeshboardHeaderLeft {
+          display: none;
+          h2 {
+            font-size: 20px;
+          }
+        }
+
+        .DeshboardHeaderRight {
+          width: 100%;
+          justify-content: space-between;
+
+          .userName {
+            font-size: 16px;
+          }
+
+          .logoutBtn {
+            padding: 6px 12px;
+            font-size: 13px;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

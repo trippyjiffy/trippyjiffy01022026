@@ -1,0 +1,70 @@
+# Robots.txt for Trippyjiffy.com
+# Travel & Tourism Website
+
+User-agent: *
+Allow: /
+
+# Allow all crawlers to access important pages
+Allow: /packages/
+Allow: /destinations/
+Allow: /blog/
+Allow: /about
+Allow: /contact
+Allow: /services
+
+# Block admin and user dashboard areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /user/
+Disallow: /login
+Disallow: /register
+Disallow: /checkout/
+Disallow: /payment/
+Disallow: /api/
+
+# Block search and filter pages to avoid duplicate content
+Disallow: /search?
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?page=
+
+# Block unnecessary files and folders
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /node_modules/
+Disallow: /src/
+
+# Block development and staging environments
+Disallow: /dev/
+Disallow: /test/
+Disallow: /staging/
+
+# Allow CSS and JS for proper rendering
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Block bad bots (optional - aggressive approach)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://www.trippyjiffy.com/sitemap.xml
+Sitemap: https://www.trippyjiffy.com/sitemap-packages.xml
+Sitemap: https://www.trippyjiffy.com/sitemap-blog.xml
+
+# Host directive (for better indexing)
+Host: https://www.trippyjiffy.com

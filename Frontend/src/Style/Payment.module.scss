@@ -1,0 +1,143 @@
+.PaymentWrapper {
+  display: block;
+  background-color: #fff;
+  width: 500px;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #444;
+  }
+
+  .transaction {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #666;
+    font-style: italic;
+  }
+
+  .PaymentInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+      max-width: 350px;
+      padding: 12px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: #d9630c;
+        box-shadow: 0 0 6px rgba(217, 99, 12, 0.3);
+      }
+    }
+  }
+
+  .PaymentDisk {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+
+    input {
+      width: 100%;
+      max-width: 350px;
+      padding: 12px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: #d9630c;
+        box-shadow: 0 0 6px rgba(217, 99, 12, 0.3);
+      }
+    }
+
+    input[type="file"] {
+      border: none;
+      padding: 5px 0;
+      font-size: 15px;
+    }
+  }
+
+  .payButton {
+    width: 200px;
+    padding: 12px 20px;
+    background: #d9630c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #b94f08;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(217, 99, 12, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 25px 15px;
+
+    h2 {
+      font-size: 24px;
+    }
+
+    h3 {
+      font-size: 20px;
+    }
+
+    .payButton {
+      width: 100%;
+      max-width: 350px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 10px;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+  }
+}

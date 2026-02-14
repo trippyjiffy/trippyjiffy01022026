@@ -1,0 +1,186 @@
+import React from "react";
+import Style from "../Style/About.module.scss";
+import AboutImg from "../Img/travel.jpg";
+import { Link, useOutletContext } from "react-router-dom";
+import { FaWhatsapp, FaComments, FaHeart, FaPencilAlt } from "react-icons/fa";
+import Director from "../Img/director2.jpeg";
+import Director1 from "../Img/director1.jpeg";
+import Certificates1 from "../Img/Certificates1.jpeg";
+import Certificates2 from "../Img/Certificates2.jpeg";
+
+import { Helmet } from "react-helmet-async";
+
+const About = () => {
+  const { darkMode } = useOutletContext();
+
+  return (
+    <div className={`${Style.About} ${darkMode ? Style.dark : ""}`}>
+    
+      <Helmet>
+        <title>About Us | TrippyJiffy - Best Travel Agency</title>
+        <meta
+          name="description"
+          content="TrippyJiffy is a travel and tourism company offering hotel bookings, holiday packages, custom trips and expert travel planning. Explore your next adventure with us."
+        />
+        <meta
+          name="keywords"
+          content="TrippyJiffy, Travel Agency, Holiday Packages, Custom Trips, Tourism Company"
+        />
+        <link rel="canonical" href="https://trippyjiffy.com/about" />
+      </Helmet>
+      <div className={Style.AboutImage}>
+        <img src={AboutImg} alt="About TrippyJiffy" />
+      </div>
+
+      <div className={Style.AboutText}>
+        <h1>Discover Your Next Adventure</h1>
+        <p>Your trusted partner in creating unforgettable travel experiences</p>
+      </div>
+
+      <div className={Style.wrapper}>
+        <div className={Style.Abouttrippy}>
+          <h2>About Trippy Jiffy</h2>
+          <p>
+            TrippyJiffy (Neelasha Travels LLP) is your go-to travel and tourism
+            booking company, dedicated to making your travel dreams come true
+            effortlessly and efficiently.
+          </p>
+          <p>
+            We offer a comprehensive range of services, including hotel
+            bookings, holiday packages, and custom travel itineraries. Whether
+            you're planning a relaxing beach vacation, an adventurous trek, or a
+            cultural exploration, we ensure a seamless experience.
+          </p>
+          <p>
+            Our expert travel advice and competitive pricing make us the perfect
+            partner for your next journey.
+          </p>
+        </div>
+        <div className={Style.AboutExperts}>
+          <div className={Style.AboutTrip}>
+            <h2>Experts in Customizing Your Trip</h2>
+
+            <div className={Style.ExpertGrid}>
+              <div className={Style.ExpertCard}>
+                <FaWhatsapp className={Style.icon} />
+                <div>
+                  <h3>Staying connected</h3>
+                  <p>
+                    Get quick answers on WhatsApp — personalized travel help
+                    based on your interests and needs.
+                  </p>
+                </div>
+              </div>
+
+              <div className={Style.ExpertCard}>
+                <FaComments className={Style.icon} />
+                <div>
+                  <h3>Seamless coordination</h3>
+                  <p>
+                    We handle all planning & support you throughout the journey.
+                  </p>
+                </div>
+              </div>
+
+              <div className={Style.ExpertCard}>
+                <FaHeart className={Style.icon} />
+                <div>
+                  <h3>Shaping experiences</h3>
+                  <p>Less time researching, more time enjoying your trip.</p>
+                </div>
+              </div>
+
+              <div className={Style.ExpertCard}>
+                <FaPencilAlt className={Style.icon} />
+                <div>
+                  <h3>Solving challenges</h3>
+                  <p>
+                    We solve on-trip issues quickly so your experience stays
+                    smooth.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+     
+        <div className={Style.AboutMeet}>
+          <h2>Meet Our Team</h2>
+          <h4>TrippyJiffy’s Most Valuable Asset</h4>
+          <p>
+            Our strength lies in passionate professionals who craft personalized
+            travel experiences.
+          </p>
+
+          <h3>Leadership Team</h3>
+
+          <div className={Style.AboutFlexmeet}>
+            <div className={Style.AboutWrapDisk}>
+              <img src={Director} alt="Arpita Srivastava" />
+              <h2>Arpita Srivastava</h2>
+              <p>
+                With over a decade of experience in the travel industry, Arpita
+                Srivastava brings a wealth of knowledge, passion, and global
+                perspective to Trippy Jiffy. Having worked across diverse
+                segments of travel, she has gained deep insights into customer
+                experiences, destination management, and industry operations.
+                Over the years, Arpita Srivastava has trained and mentored professionals
+                across borders, empowering teams with the right skills and
+                mindset to deliver exceptional travel experiences. Her
+                understanding of aviation and travel systems further strengthens
+                her ability to create seamless and innovative travel solutions
+                for clients worldwide. Driven by a vision to make every journey
+                memorable, Arpita continues to inspire her team to combine
+                expertise with empathy. Turning travel dreams into beautiful
+                realities.
+              </p>
+              <h2>Managing Director</h2>
+            </div>
+
+            <div className={Style.AboutWrapDisk}>
+              <img src={Director1} alt="Shailee Srivastava" />
+              <h2>Shailee Srivastava</h2>
+              <p>
+                With over 11 years of experience in the travel industry,Shailee
+                Shrivastava stands out as a dynamic leader who excels in both
+                sales strategy and operational excellence. As the Director of
+                Sales & Operations at Trippy Jiffy, she plays a pivotal role in
+                driving business growth and ensuring seamless execution across
+                all departments. Shailee Srivastava in-depth understanding of travel
+                dynamics, coupled with her exceptional team management skills,
+                enables her to lead high-performing teams that consistently
+                achieve and surpass targets. Her strategic vision, strong
+                operational insight, and result-oriented approach make her an
+                indispensable part of the organization. Known for her ability to
+                transform challenges into opportunities, Shailee Srivastava continues to
+                inspire her team with her commitment, leadership, and passion
+                for delivering outstanding travel experiences.
+              </p>
+              <h2>Director Operations & Sales</h2>
+            </div>
+          </div>
+        </div>
+        <div className={Style.AboutCertificates}>
+          <div className={Style.AboutCertificatesDisk}>
+            <h2>Ministry of Tourism Certificates</h2>
+            <p>
+              Official government-issued tourism registration documents for
+              verification and compliance
+            </p>
+          </div>
+          <div className={Style.AboutCertificatesFlex}>
+            <div className={Style.AboutCertificatesLeft}>
+              <img src={Certificates1} alt="Certificates1" />
+            </div>
+            <div className={Style.AboutCertificatesRight}>
+              <img src={Certificates2} alt="Certificates2" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default About;

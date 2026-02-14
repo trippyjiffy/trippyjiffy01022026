@@ -1,0 +1,128 @@
+.Profile {
+  padding: 25px;
+  max-width: 650px;
+  margin: 30px auto;
+  background-color: #f9f9f9;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
+    letter-spacing: 0.5px;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: #d35400;
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  .info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #f5faff;
+      }
+
+      .label {
+        font-weight: 600;
+        width: 120px;
+        color: #333;
+      }
+
+      .value {
+        color: #555;
+        word-break: break-word;
+      }
+    }
+  }
+
+  .loading,
+  .error {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 20px;
+    border-radius: 8px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .loading {
+    color: #0077ff;
+    background-color: #e8f0fe;
+  }
+
+  .error {
+    color: #dc3545;
+    background-color: #fdecea;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    padding: 20px;
+
+    .info {
+      padding: 15px;
+
+      .item {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .label {
+          width: 100%;
+          margin-bottom: 4px;
+        }
+
+        .value {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

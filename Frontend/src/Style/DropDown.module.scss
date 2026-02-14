@@ -1,0 +1,267 @@
+.NavList {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  &.dark {
+    color: #fff;
+
+    .NavItem {
+      .MenuLink {
+        a,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .NavItem {
+    position: relative;
+
+    .MenuLink {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      &:hover {
+        color: green;
+      }
+    }
+
+    .DropArrow {
+      font-size: 12px;
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .open {
+      transform: rotate(180deg);
+    }
+
+    .DropdownWrapper {
+      position: absolute;
+      top: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.35s ease;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      padding: 12px;
+      z-index: 1000;
+      width: 370px;
+      overflow: hidden;
+
+      &.showDropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      &.IndiaWrapper,
+      &.AsiaWrapper {
+        padding: 25px;
+        height: 440px;
+        overflow-y: auto;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #fff 0%, #f9f9ff 100%);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        margin-top: 40px;
+
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #ccc;
+          border-radius: 6px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: #999;
+        }
+      }
+
+      &.DefaultWrapper {
+        width: 180px;
+        margin-top: 45px;
+        border-radius: 8px;
+      }
+    }
+
+    .Dropdown {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: block;
+
+      .DropItem {
+        margin-bottom: 20px;
+
+        .CategoryLink {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 15px;
+          margin: 5px 0;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: 500;
+          color: #333;
+          background-color: #fff;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          position: relative;
+
+          // Hover effect
+          &:hover {
+            color: green;
+          }
+
+          // Active state (if needed)
+          &.active {
+            color: green;
+          }
+
+          // Arrow span
+          span {
+            transition: transform 0.3s ease;
+            font-size: 12px;
+            color: #555;
+          }
+        }
+
+        h2 {
+          font-size: 16px;
+          font-weight: 600;
+          color: #222;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 12px;
+          border-radius: 8px;
+          background: #f8f8f8;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: #f0f0ff;
+            color: #6a5acd;
+          }
+
+          p {
+            font-size: 14px;
+            margin: 0;
+            transition: transform 0.3s ease;
+          }
+
+          &.active p {
+            transform: rotate(180deg);
+          }
+        }
+
+        > a {
+          display: block;
+          font-weight: 500;
+          font-size: 15px;
+          letter-spacing: 0.3px;
+          margin: 8px 0;
+          padding: 8px 12px;
+          text-decoration: none;
+          border-radius: 6px;
+          color: #444;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: #6a5acd;
+          }
+        }
+
+        .StateList {
+          list-style: none;
+          margin: 10px 0 0 15px;
+          padding: 0;
+          border-left: 2px solid #eee;
+
+          li {
+            margin: 6px 0;
+            padding-left: 10px;
+
+            a {
+              display: block;
+              padding: 6px 10px;
+              border-radius: 6px;
+              font-size: 0.95rem;
+              color: #333;
+              text-decoration: none;
+              transition: all 0.25s ease;
+
+              &:hover {
+                background: #f0f0ff;
+                color: #6a5acd;
+                transform: translateX(3px);
+              }
+            }
+          }
+        }
+      }
+      .AsiaWrapper .DropItem {
+        width: 250px;
+        word-wrap: break-word;
+        line-height: 1.5;
+      }
+    }
+
+    .showDropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5px);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .NavList {
+    flex-direction: column;
+    gap: 15px;
+
+    .NavItem {
+      .DropdownWrapper {
+        position: relative;
+        width: 100% !important;
+        box-shadow: none;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+      }
+
+      .Dropdown {
+        flex-direction: column;
+        gap: 5px;
+
+        .DropItem {
+          flex: unset;
+
+          h2 {
+            font-size: 14px;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}

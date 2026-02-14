@@ -1,0 +1,122 @@
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #fdfdfd, #f4f8ff);
+  &.dark {
+    background: #000;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    text-align: center;
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      .LoginInput {
+        position: relative;
+
+        input {
+          width: 100%;
+          padding: 12px 14px;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+          outline: none;
+          font-size: 15px;
+          transition: 0.3s;
+
+          &:focus {
+            border-color: #0066ff;
+            box-shadow: 0 0 0 2px rgba(0, 102, 255, 0.1);
+          }
+          &::placeholder {
+            font-size: 17px;
+            font-weight: 500;
+            color: #333;
+          }
+        }
+      }
+
+      .LoginSubmit {
+        button {
+          width: 100%;
+          padding: 12px;
+          font-size: 16px;
+          font-weight: 600;
+          border: none;
+          border-radius: 8px;
+          background:linear-gradient(135deg, #e67e22, #d35400);
+          color: #fff;
+          cursor: pointer;
+          transition: 0.3s;
+
+          &:hover {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+          }
+        }
+      }
+
+      .RegisterLink {
+        margin-top: 12px;
+
+        a {
+          font-size: 14px;
+          color: #linear-gradient(45deg, #e91e63, #000a5b);;
+          text-decoration: none;
+          transition: 0.3s;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .Message {
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #444;
+    }
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+@media (max-width: 480px) {
+  .Login {
+    padding: 20px;
+
+    .wrapper {
+      padding: 25px 20px;
+
+      h2 {
+        font-size: 24px;
+      }
+
+      form {
+        gap: 15px;
+
+        .LoginSubmit button {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

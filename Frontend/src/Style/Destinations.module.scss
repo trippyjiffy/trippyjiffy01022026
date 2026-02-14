@@ -1,0 +1,265 @@
+.destinationsContainer {
+  padding: 2rem 1rem;
+  background: #f9f9f9;
+  transition: background 0.3s ease;
+
+  &.dark {
+    background: #121212;
+
+    /* Apply dark mode to DestinationCard using CSS Modules :global */
+    :global(.DestinationCard) {
+      background: #1a1a1a;
+      box-shadow:
+        0 0 20px 4px rgba(227, 85, 22, 0.6),
+        0 0 40px 8px rgba(227, 85, 22, 0.4),
+        0 0 60px 12px rgba(227, 85, 22, 0.3);
+      transition: all 0.4s ease;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow:
+          0 0 30px 6px rgba(227, 85, 22, 0.8),
+          0 0 50px 10px rgba(227, 85, 22, 0.6),
+          0 0 70px 14px rgba(227, 85, 22, 0.5);
+      }
+
+      h3,
+      ul li {
+        color: #fff;
+      }
+
+      .DestinationCardImg img {
+        filter: brightness(0.85);
+      }
+    }
+  }
+  .disabledRow {
+  color: gray;
+  text-decoration: line-through;
+
+  td {
+    opacity: 0.6;
+  }
+
+  button {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  img {
+    opacity: 0.5;
+  }
+}
+
+  
+  .disabledRow {
+  color: gray;
+  text-decoration: line-through;
+
+  td {
+    opacity: 0.6;
+  }
+
+  button {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  img {
+    opacity: 0.5;
+  }
+}
+
+
+  .wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    .DestinationCardBlock {
+      margin-top: 35px;
+      text-align: center;
+
+      h2 {
+        font-size: 32px;
+        font-weight: 600;
+        display: inline-block;
+
+        span {
+          color: #ff7f50;
+        }
+      }
+    }
+
+    .swiper {
+      padding: 1rem 0;
+      position: relative;
+
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #ff7f50;
+        width: 2.5rem;
+        height: 2.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        z-index: 10;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #ff7f50;
+          color: #fff;
+        }
+
+        &:after {
+          font-size: 1.5rem;
+        }
+      }
+
+      .swiper-button-prev {
+        left: -1.5rem;
+      }
+
+      .swiper-button-next {
+        right: -1.5rem;
+      }
+
+      .swiper-pagination {
+        display: none !important;
+      }
+    }
+
+    .DestinationCard {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: #333;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      margin-top: 50px;
+      margin-bottom: 30px;
+      height: 300px;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .DestinationCardImg {
+        width: 100%;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 185px;
+          display: block;
+          transition: transform 0.6s ease-in-out;
+
+          &:hover {
+            transform: scale(1.07);
+          }
+        }
+
+        .placeholderImg {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #e0e0e0;
+          color: #888;
+          font-weight: 500;
+          width: 100%;
+          padding-top: 56.25%;
+          position: relative;
+        }
+      }
+
+      .DestinationCardtext {
+        padding: 1rem;
+        flex: 1;
+        text-align: center;
+
+        h3 {
+          font-size: 18px;
+          font-weight: 500;
+          color: #333;
+        }
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          justify-content: center;
+
+          li {
+            background: #ff7f50;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
+
+    .skeletonCard {
+      width: 100%;
+      border-radius: 12px;
+      background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      padding-top: 56.25%;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .DestinationCard img {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .DestinationCard img {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .DestinationCard img {
+    max-height: 180px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 2rem;
+    height: 2rem;
+
+    &:after {
+      font-size: 1.2rem;
+    }
+  }
+}
