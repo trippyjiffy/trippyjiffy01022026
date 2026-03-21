@@ -1,0 +1,174 @@
+.Register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 90vh;
+  background: linear-gradient(135deg, #fdfdfd, #f4f8ff);
+  &.dark {
+    background: #000;
+    .wrapper {
+      .RegisterDisk {
+        .RegisterIcon {
+          color: #fff;
+        }
+        h2 {
+          color: #ffff;
+        }
+      }
+      .RegisterForm {
+        background: #fff;
+      }
+    }
+  }
+
+  .wrapper {
+    max-width: 480px;
+    width: 100%;
+
+    .RegisterDisk {
+      text-align: center;
+
+      .RegisterIcon {
+        font-size: 70px;
+        color: #555;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+          color: #f5ba3b;
+        }
+      }
+
+      h2 {
+        font-size: 30px;
+        color: #555;
+        margin-bottom: 25px;
+        font-weight: 700;
+        position: relative;
+
+        &::after {
+          content: "";
+          width: 60px;
+          height: 3px;
+          background-color: #f5ba3b;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -8px;
+        }
+      }
+    }
+
+    .RegisterForm {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 35px 25px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+
+      .Form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        .RegisterInput {
+          position: relative;
+
+          input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid #ddd;
+            color: #333;
+            transition: all 0.3s ease;
+
+            &::placeholder {
+              color: #333;
+              font-size: 17px;
+            }
+
+            &:focus {
+              border: 2px solid #f5ba3b;
+              box-shadow: 0 0 8px rgba(245, 186, 59, 0.5);
+              outline: none;
+            }
+          }
+
+          .ToggleIcon {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 20px;
+            color: #f5ba3b;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+
+        .RegisterSubmit {
+          text-align: center;
+
+          button {
+            width: 150px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            background: linear-gradient(45deg, #f5ba3b, #e91e63);
+            color: #fff;
+            transition: background 0.4s ease;
+
+            &:hover {
+              background: linear-gradient(45deg, #e91e63, #000a5b);
+            }
+          }
+        }
+
+        .Registeralredy {
+          margin-top: 10px;
+          text-align: center;
+
+          a {
+            color: #000;
+            font-size: 15px;
+            text-decoration: none;
+            position: relative;
+
+            &::after {
+              content: "";
+              width: 0;
+              height: 2px;
+              background: #f5ba3b;
+              position: absolute;
+              bottom: -4px;
+              left: 0;
+              transition: width 0.3s ease;
+            }
+
+            &:hover::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .Message {
+        margin-top: 15px;
+        font-weight: bold;
+        text-align: center;
+        color: #f5ba3b;
+      }
+    }
+  }
+}

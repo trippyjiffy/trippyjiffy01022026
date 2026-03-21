@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/Img/trippylogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>trippyjiffy</title>
+
+    <!-- ✅ Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T282JTWD");
+    </script>
+
+    <!-- ✅ Google Ads -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17771713499"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-17771713499");
+    </script>
+
+    <!-- ✅ Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "TrippyJiffy Travel",
+        "url": "https://trippyjiffy.com/",
+        "logo": "https://trippyjiffy.com/logo.png",
+        "image": "https://trippyjiffy.com/banner.jpg",
+        "description": "Unlock India's 4th Dimension of Travel with TrippyJiffy.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lucknow",
+          "addressRegion": "UP",
+          "addressCountry": "IN"
+        },
+        "telephone": "+91-9870210896"
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- ✅ React entry -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ✅ EditorJS (ONLY ONE SOURCE – CDN) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"
+      defer
+    ></script>
+
+    <!-- ✅ Your custom editor config -->
+    <script src="/editor.js" defer></script>
+
+    <!-- ✅ Razorpay (defer so it won’t block LCP) -->
+    <script
+      src="https://checkout.razorpay.com/v1/checkout.js"
+      defer
+    ></script>
+
+    <!-- ✅ Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGEZY5NBY0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-DGEZY5NBY0");
+    </script>
+    
+    
+  </body>
+</html>

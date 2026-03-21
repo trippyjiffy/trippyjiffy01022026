@@ -1,0 +1,268 @@
+.Header {
+  display: block;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  padding: 23px 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  &.dark {
+    background: #121212;
+    color: #fff;
+
+    .wrapper {
+      .HeaderFlex {
+        .HeaderRight {
+          .NavList {
+            .NavItem {
+              .MenuLink {
+                a {
+                  color: #fff;
+                  span {
+                    color: #fff;
+                  }
+                }
+              }
+              .Dropdown li a {
+                color: #000;
+              }
+            }
+          }
+
+          .HeaderUser a {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  &.active {
+    background: #f8f9fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  &.dark.active {
+    background: #121212;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.12);
+  }
+
+  .scrollBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    border-radius: 5px;
+      background: linear-gradient(90deg, #e35516, #ff9a3c);
+    transition: width 0.2s ease-out;
+  }
+
+  .wrapper {
+    max-width: 1350px;
+    margin: auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    .HeaderFlex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+
+      .HeaderLeft {
+        width: 98px;
+
+        img {
+          width: 80%;
+          height: auto;
+          object-fit: contain;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          transform: scale(1.3);
+        }
+      }
+
+      .HeaderRight {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .LanguageSelect {
+          width: 125px;
+          padding: 10px 7px;
+          border: solid 1px #ddd;
+          border-radius: 8px;
+          background: linear-gradient(135deg, #e67e22, #d35400);
+          color: #fff;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          appearance: none;
+          transition: all 0.3s ease;
+
+          option {
+            color: #000;
+          }
+
+          &:hover {
+            background: linear-gradient(135deg, #cf6d1b, #a84300);
+          }
+        }
+
+        .PlanTripBtn {
+          padding: 11px 8px;
+          background: linear-gradient(135deg, #e67e22, #d35400);
+          border: none;
+          border-radius: 6px;
+          color: #fff;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: 600;
+          display: block;
+          text-align: center;
+          cursor: pointer;
+          margin-top: 4px;
+          transition: all 0.3s ease;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+
+          &:hover {
+            background: linear-gradient(135deg, #cf6d1b, #a84300);
+            transform: translateY(-2px);
+          }
+        }
+
+        .Payment {
+          padding: 9px 8px;
+          background: linear-gradient(135deg, #e67e22, #d35400);
+          border: none;
+          border-radius: 6px;
+          color: #fff;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: 500;
+          display: block;
+          text-align: center;
+          cursor: pointer;
+          margin-top: 4px;
+          transition: all 0.3s ease;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+
+          a {
+            text-decoration: none;
+            color: #fff;
+          }
+
+          &:hover {
+            background: linear-gradient(135deg, #cf6d1b, #a84300);
+            transform: translateY(-2px);
+          }
+        }
+
+        .modalOverlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          overflow-y: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          background: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(3px);
+        }
+
+        .modalContent {
+          width: 100%;
+          max-width: 550px;
+          margin: auto;
+          position: relative;
+          z-index: 1001;
+        }
+
+        .closeBtn {
+          position: absolute;
+          top: 50px;
+          right: 29px;
+          font-size: 24px;
+          background: #dc3545;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1002;
+        }
+
+        .HeaderUser a {
+          display: block;
+          color: #333;
+        }
+      }
+    }
+
+    .Headertoggle {
+      display: none;
+      cursor: pointer;
+
+      span {
+        width: 28px;
+        height: 3px;
+        background-color: darkorange;
+        display: block;
+        margin: 6px 0;
+        border-radius: 2px;
+        transition: all 0.4s ease;
+      }
+
+      &.open {
+        span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+        }
+        span:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .Header {
+    .wrapper {
+      .HeaderFlex {
+        .HeaderRight {
+          display: none;
+        }
+        .Headertoggle {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .Header {
+    .wrapper {
+      padding: 0 15px;
+      .HeaderFlex {
+        .HeaderLeft {
+          width: 90px;
+        }
+      }
+    }
+  }
+}

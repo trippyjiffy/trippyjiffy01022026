@@ -1,0 +1,225 @@
+import React, { useState } from "react";
+import Style from "../Style/Contact.module.scss";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    full_name: "",
+    email: "",
+    country_code: "+91",
+    phone: "",
+    contact_via_email: false,
+    contact_via_phone: false,
+    contact_via_whatsapp: false,
+  });
+
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
+  const handleChange = (e) => {
+    const { id, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [id]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const fullPhone = formData.phone.replace(/\D/g, "");
+    if (!/^\d{6,15}$/.test(fullPhone)) {
+      alert("Please enter a valid phone number (6–15 digits).");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${baseURL}/api/contact/post`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          phone: `${formData.country_code}${fullPhone}`,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Message sent successfully ✅");
+        setFormData({
+          full_name: "",
+          email: "",
+          country_code: "+91",
+          phone: "",
+          contact_via_email: false,
+          contact_via_phone: false,
+          contact_via_whatsapp: false,
+        });
+      } else {
+        alert("Error: " + data.message);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong ❌");
+    }
+  };
+
+  return (
+    <div className={Style.Contact}>
+      {/* ✅ DYNAMIC TITLE + DESCRIPTION */}
+   <Helmet>
+  <title>Contact Us | TrippyJiffy</title>
+
+  <meta
+    name="description"
+    content="Contact TrippyJiffy for travel assistance, custom packages, bookings, and support."
+  />
+
+  {/* ✅ CANONICAL URL */}
+  <link
+    rel="canonical"
+    href="https://trippyjiffy.com/contact-us"
+  />
+</Helmet>
+
+
+      {/* HEADER IMAGE */}
+      <div className={Style.ContactImg}>
+        <img
+          src="https://wallpapers.com/images/hd/wooden-blocks-contact-us-vh58juahu6kzh7i8.jpg"
+          alt="contact"
+        />
+      </div>
+
+      {/* WRAPPER */}
+      <div className={Style.wrapper}>
+        <div className={Style.ContactFlex}>
+          {/* LEFT - FORM */}
+          <div className={Style.ContactLeft}>
+            <div className={Style.ContactPlan}>
+              <h1>Contact Us</h1>
+            </div>
+
+            <form className={Style.ContactForm} onSubmit={handleSubmit}>
+              {/* FULL NAME */}
+              <div className={Style.FormGroup}>
+                <label htmlFor="full_name">Full Name</label>
+                <input
+                  type="text"
+                  id="full_name"
+                  placeholder="Enter your full name"
+                  value={formData.full_name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* EMAIL */}
+              <div className={Style.FormGroup}>
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="example@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* PHONE */}
+              <div className={Style.FormGroup}>
+                <label htmlFor="phone">Phone Number</label>
+                <div className={Style.PhoneInputGroup}>
+                  <select
+                    id="country_code"
+                    value={formData.country_code}
+                    onChange={handleChange}
+                  >
+                    <option value="+91">🇮🇳 +91 (India)</option>
+                    <option value="+1">🇺🇸 +1 (USA)</option>
+                    <option value="+44">🇬🇧 +44 (UK)</option>
+                    <option value="+61">🇦🇺 +61 (Australia)</option>
+                    <option value="+971">🇦🇪 +971 (UAE)</option>
+                    <option value="+49">🇩🇪 +49 (Germany)</option>
+                    <option value="+33">🇫🇷 +33 (France)</option>
+                    <option value="+81">🇯🇵 +81 (Japan)</option>
+                    <option value="+65">🇸🇬 +65 (Singapore)</option>
+                  </select>
+
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter phone number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* CONTACT METHODS */}
+              <div className={Style.FormGroupCheckbox}>
+                <input
+                  type="checkbox"
+                  id="contact_via_email"
+                  checked={formData.contact_via_email}
+                  onChange={handleChange}
+                />
+                <label htmlFor="contact_via_email">Contact me via Email</label>
+              </div>
+
+              <div className={Style.FormGroupCheckbox}>
+                <input
+                  type="checkbox"
+                  id="contact_via_phone"
+                  checked={formData.contact_via_phone}
+                  onChange={handleChange}
+                />
+                <label htmlFor="contact_via_phone">Contact me via Call</label>
+              </div>
+
+              <div className={Style.FormGroupCheckbox}>
+                <input
+                  type="checkbox"
+                  id="contact_via_whatsapp"
+                  checked={formData.contact_via_whatsapp}
+                  onChange={handleChange}
+                />
+                <label htmlFor="contact_via_whatsapp">
+                  Contact me via WhatsApp
+                </label>
+              </div>
+
+              {/* SUBMIT */}
+              <button type="submit" className={Style.SubmitBtn}>
+                Submit
+              </button>
+            </form>
+          </div>
+
+          {/* RIGHT - INFO */}
+          <div className={Style.ContactRight}>
+            <h2>Contact Information</h2>
+            <p>
+              <strong>Email:</strong>
+              <br />
+              <Link to="mailto:travelqueries@trippyjiffy.com">
+                travelqueries@trippyjiffy.com
+              </Link>
+            </p>
+            <p>
+              <strong>Phone:</strong>
+              <br />
+              <Link to="tel:+919870210896">+91 98702 10896</Link>
+              <br />
+              <Link to="tel:+918527454549">+91 85274 54549</Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;

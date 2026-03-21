@@ -1,0 +1,205 @@
+.Profile {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #333;
+  }
+
+  .userInfo {
+    p {
+      margin: 8px 0;
+      font-size: 16px;
+      strong {
+        width: 120px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+
+    button {
+      padding: 7px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &.updateButton {
+        background-color: #28a745;
+        color: #fff;
+        &:hover {
+          background-color: #218838;
+        }
+      }
+
+      &.deleteButton {
+        background-color: #dc3545;
+        color: #fff;
+        &:hover {
+          background-color: #c82333;
+        }
+      }
+    }
+  }
+
+  .message {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .error {
+    color: #dc3545;
+  }
+
+  /* Compact Popup Overlay */
+  .PopupOverlay {
+    position: fixed;
+    inset: 0; // top:0; left:0; right:0; bottom:0; equivalent
+    background: rgba(0, 0, 0, 0.6); // semi-transparent black
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 15px;
+    backdrop-filter: blur(3px); // subtle blur for modern look
+    animation: fadeIn 0.25s ease-in-out;
+  }
+
+  .PopupBox {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px; // slightly wider for readability
+    max-height: 85%; // ensures it stays inside screen
+    padding: 25px 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    animation: slideUp 0.25s ease-in-out;
+  }
+
+  /* Optional smooth scroll for long content */
+  .PopupBox::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .PopupBox::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      background: rgba(0, 0, 0, 0);
+    }
+    to {
+      background: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .popupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 600;
+        margin-bottom: 4px;
+        font-size: 14px;
+      }
+
+      input {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        &:focus {
+          border-color: #0077ff;
+          outline: none;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+
+      button {
+        padding: 7px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+
+        &.updateButton {
+          background-color: #28a745;
+          color: #fff;
+        }
+
+        &.cancelButton {
+          background-color: #6c757d;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  /* Password show/hide */
+  .passwordWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    input {
+      flex: 1;
+    }
+
+    .showBtn {
+      padding: 5px 10px;
+      font-size: 12px;
+      background-color: #0077ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: #005bb5;
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+.UserDashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+
+  .welcomeTitle {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .userHighlight {
+    color: #36a2eb;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  .StatsRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+
+    .Card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.2rem;
+        color: #333;
+      }
+
+      p,
+      li {
+        color: #555;
+        font-size: 0.95rem;
+      }
+
+      ul {
+        list-style: inside disc;
+        padding-left: 0;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    .welcomeTitle {
+      font-size: 1.5rem;
+    }
+
+    .StatsRow {
+      grid-template-columns: 1fr;
+    }
+  }
+}
