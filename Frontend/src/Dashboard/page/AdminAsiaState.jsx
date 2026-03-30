@@ -17,21 +17,30 @@ const AdminAsiaState = () => {
   const baseURL = import.meta.env.VITE_API_BASE_URL;
   const baseIMG = import.meta.env.VITE_API_BASE_URL_IMG;
 
+  // ✅ SAFE DATA HANDLING
   const fetchStates = async () => {
     try {
       const res = await axios.get(`${baseURL}/api/asiaState/get`);
-      setStates(res.data);
+      console.log("States API:", res.data);
+
+      // FIX 👇
+      setStates(Array.isArray(res.data) ? res.data : res.data.data || []);
     } catch (err) {
       console.error("Error fetching states:", err);
+      setStates([]);
     }
   };
 
   const fetchAsiaList = async () => {
     try {
       const res = await axios.get(`${baseURL}/api/asia/get`);
-      setAsiaList(res.data);
+      console.log("Asia API:", res.data);
+
+      // FIX 👇
+      setAsiaList(Array.isArray(res.data) ? res.data : res.data.data || []);
     } catch (err) {
       console.error("Error fetching asia list:", err);
+      setAsiaList([]);
     }
   };
 
@@ -47,7 +56,7 @@ const AdminAsiaState = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setForm({ ...form, state_image: file });
-    setPreview(URL.createObjectURL(file));
+    setPreview(file ? URL.createObjectURL(file) : "");
   };
 
   const openAddModal = () => {
@@ -102,79 +111,73 @@ const AdminAsiaState = () => {
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this state?")) return;
+    if (!window.confirm("Are you sure?")) return;
     try {
       await axios.delete(`${baseURL}/api/asiaState/delete/${id}`);
       fetchStates();
-      alert("🗑️ State deleted");
+      alert("🗑️ Deleted");
     } catch (err) {
-      console.error("Error deleting state:", err);
-      alert("Error deleting state");
+      console.error(err);
     }
   };
 
   return (
     <div className={Style.AdminAsiaState}>
       <h2>🌏 Asia State Management</h2>
+
       <button className={Style.addBtn} onClick={openAddModal}>
         + Add State
       </button>
 
-      <div className={Style.tableWrapper}>
-        <table className={Style.stateTable}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>State Name</th>
-              <th>Image</th>
-              <th>Asia</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {states.length > 0 ? (
-              states.map((s) => (
-                <tr key={s.id}>
-                  <td>{s.id}</td>
-                  <td>{s.state_name}</td>
-                  <td>
-                    {s.state_image && (
-                      <img
-                        src={`${baseIMG}${s.state_image}`}
-                        load
-                        hoga
-                        alt={s.state_name}
-                        className={Style.stateImg}
-                      />
-                    )}
-                  </td>
-                  <td>
-                    {asiaList.find((a) => String(a.id) === String(s.asia_id))
-                      ?.country_name || "Unknown"}
-                  </td>
-                  <td>
-                    <button
-                      className={Style.editBtn}
-                      onClick={() => handleEdit(s)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className={Style.deleteBtn}
-                      onClick={() => handleDelete(s.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="5">No States Found</td>
+      <table className={Style.stateTable}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Asia</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {Array.isArray(states) && states.length > 0 ? (
+            states.map((s) => (
+              <tr key={s.id}>
+                <td>{s.id}</td>
+                <td>{s.state_name}</td>
+
+                <td>
+                  {s.state_image && (
+                    <img
+                      src={`${baseIMG}${s.state_image}`}
+                      alt={s.state_name}
+                      className={Style.stateImg}
+                    />
+                  )}
+                </td>
+
+                <td>
+                  {Array.isArray(asiaList)
+                    ? asiaList.find(
+                        (a) => String(a.id) === String(s.asia_id)
+                      )?.country_name || "Unknown"
+                    : "Unknown"}
+                </td>
+
+                <td>
+                  <button onClick={() => handleEdit(s)}>Edit</button>
+                  <button onClick={() => handleDelete(s.id)}>Delete</button>
+                </td>
               </tr>
-            )}
-          </tbody>
-        </table>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5">No Data</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
       </div>
 
       {showModal && (
