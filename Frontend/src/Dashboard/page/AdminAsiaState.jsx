@@ -17,27 +17,38 @@ const AdminAsiaState = () => {
   const baseURL = import.meta.env.VITE_API_BASE_URL;
   const baseIMG = import.meta.env.VITE_API_BASE_URL_IMG;
 
-  // ✅ SAFE DATA HANDLING
+  // ✅ SAFE STATES FETCH
   const fetchStates = async () => {
     try {
       const res = await axios.get(`${baseURL}/api/asiaState/get`);
       console.log("States API:", res.data);
 
-      // FIX 👇
-      setStates(Array.isArray(res.data) ? res.data : res.data.data || []);
+      const data = Array.isArray(res.data)
+        ? res.data
+        : Array.isArray(res.data?.data)
+        ? res.data.data
+        : [];
+
+      setStates(data);
     } catch (err) {
       console.error("Error fetching states:", err);
       setStates([]);
     }
   };
 
+  // ✅ SAFE ASIA FETCH
   const fetchAsiaList = async () => {
     try {
       const res = await axios.get(`${baseURL}/api/asia/get`);
       console.log("Asia API:", res.data);
 
-      // FIX 👇
-      setAsiaList(Array.isArray(res.data) ? res.data : res.data.data || []);
+      const data = Array.isArray(res.data)
+        ? res.data
+        : Array.isArray(res.data?.data)
+        ? res.data.data
+        : [];
+
+      setAsiaList(data);
     } catch (err) {
       console.error("Error fetching asia list:", err);
       setAsiaList([]);
@@ -104,9 +115,7 @@ const AdminAsiaState = () => {
       fetchStates();
     } catch (err) {
       console.error("Error saving state:", err);
-      alert(
-        "Error saving state: " + (err.response?.data?.message || err.message)
-      );
+      alert(err.response?.data?.message || "Error saving state");
     }
   };
 
@@ -178,23 +187,23 @@ const AdminAsiaState = () => {
           )}
         </tbody>
       </table>
-      </div>
 
       {showModal && (
         <div className={Style.modalOverlay}>
           <div className={Style.modalBox}>
             <h3>{editingId ? "Edit State" : "Add State"}</h3>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+
+            <form onSubmit={handleSubmit}>
               <input
                 type="text"
                 name="state_name"
-                placeholder="State Name"
                 value={form.state_name}
                 onChange={handleChange}
+                placeholder="State Name"
                 required
               />
 
-              <input type="file" accept="image/*" onChange={handleFileChange} />
+              <input type="file" onChange={handleFileChange} />
 
               <select
                 name="asia_id"
@@ -203,29 +212,23 @@ const AdminAsiaState = () => {
                 required
               >
                 <option value="">Select Asia</option>
-                {asiaList.map((asia) => (
-                  <option key={asia.id} value={asia.id}>
-                    {asia.country_name}
-                  </option>
-                ))}
+                {Array.isArray(asiaList) &&
+                  asiaList.map((asia) => (
+                    <option key={asia.id} value={asia.id}>
+                      {asia.country_name}
+                    </option>
+                  ))}
               </select>
 
-              {preview && (
-                <img src={preview} alt="preview" className={Style.previewImg} />
-              )}
+              {preview && <img src={preview} className={Style.previewImg} />}
 
-              <div className={Style.btnGroup}>
-                <button type="submit" className={Style.saveBtn}>
-                  {editingId ? "Update" : "Add"}
-                </button>
-                <button
-                  type="button"
-                  className={Style.cancelBtn}
-                  onClick={() => setShowModal(false)}
-                >
-                  Cancel
-                </button>
-              </div>
+              <button type="submit">
+                {editingId ? "Update" : "Add"}
+              </button>
+
+              <button type="button" onClick={() => setShowModal(false)}>
+                Cancel
+              </button>
             </form>
           </div>
         </div>
